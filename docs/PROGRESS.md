@@ -10,11 +10,16 @@
 - **聯絡方式**：Email + LinkedIn + LINE 官方帳號（電話不公開）
 - **設計**：暖石灰近單色 + 琥珀色點綴（呼應 Amber）、Archivo + Noto Sans TC、支援深色模式與 prefers-reduced-motion
 
+## 2026-08-19 推上 GitHub
+
+- Repo：`yunchang1986/graceflow_tw`（私有），本地工作目錄 `~/github/graceflow_tw`（以此為準，`~/graceflow.tw` 為初版草稿可刪）
+- ⚠️ 私有 repo 開 GitHub Pages 需要 GitHub Pro；若不升級，改用 Cloudflare Pages 連私有 repo 部署
+
 ### 待辦
 - [ ] LinkedIn 個人檔案網址（index.html 內 TODO，目前是 linkedin.com 首頁）
 - [ ] 建立 LINE 官方帳號後，換上 lin.ee 加入好友連結並移除按鈕的 `hidden`
-- [ ] 建 GitHub repo 並推送，開啟 GitHub Pages
-- [ ] graceflow.tw DNS 設定：A 記錄指向 GitHub Pages IP（185.199.108–111.153）+ www CNAME
+- [ ] 開啟 Pages（GitHub Pro）或改接 Cloudflare Pages
+- [ ] graceflow.tw DNS 設定：A 記錄指向 GitHub Pages IP（185.199.108–111.153）+ www CNAME（Cloudflare Pages 則為 CNAME 指向 pages.dev）
 - [ ] 學歷「靜宜碩士 vs 學士」層級待確認（見 ~/Downloads/Amber_Chang_正式資料_official_20260819.txt）
 
 ### 相關檔案
