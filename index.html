@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GraceFlow</title>
+<meta name="description" content="Amber Chang — AI Project Lead / Technical Program Manager. 把模糊的想法，變成可交付的 AI 系統。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+  :root {
+    --paper: #FAFAF9;
+    --ink: #1C1917;
+    --muted: #57534E;
+    --faint: #79716B;
+    --line: #E7E5E1;
+    --amber: #B45309;
+    --amber-soft: #F5EDE3;
+    --card: #FFFFFF;
+  }
+  :root:not([data-theme="light"]) { }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #171412;
+      --ink: #EDE9E4;
+      --muted: #B8B0A8;
+      --faint: #8F867E;
+      --line: #2E2925;
+      --amber: #E8A33D;
+      --amber-soft: #262019;
+      --card: #1F1B18;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #171412;
+    --ink: #EDE9E4;
+    --muted: #B8B0A8;
+    --faint: #8F867E;
+    --line: #2E2925;
+    --amber: #E8A33D;
+    --amber-soft: #262019;
+    --card: #1F1B18;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "Archivo", -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+  body.en { font-family: "Archivo", "Noto Sans TC", -apple-system, sans-serif; }
+
+  /* language switching */
+  body:not(.en) [data-lang="en"] { display: none; }
+  body.en [data-lang="zh"] { display: none; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+  /* header */
+  header {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand {
+    font-family: "Archivo", sans-serif;
+    font-weight: 700; font-size: 18px; letter-spacing: 0.02em;
+    color: var(--ink); text-decoration: none;
+  }
+  .brand span { color: var(--amber); }
+  .lang-toggle {
+    display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
+  }
+  .lang-toggle button {
+    appearance: none; border: 0; background: transparent; color: var(--faint);
+    font: inherit; font-size: 14px; padding: 8px 16px; cursor: pointer;
+    min-height: 40px; transition: color 0.2s, background 0.2s;
+  }
+  .lang-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .lang-toggle button:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+
+  /* hero */
+  .hero { padding: 96px 0 80px; }
+  .eyebrow {
+    font-family: "Archivo", sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--amber);
+    margin-bottom: 24px;
+  }
+  h1 {
+    font-family: "Archivo", "Noto Sans TC", sans-serif;
+    font-size: clamp(30px, 5.4vw, 52px);
+    font-weight: 700; line-height: 1.25; letter-spacing: -0.01em;
+    text-wrap: balance;
+    max-width: 21em;
+  }
+  .hero p.lede {
+    margin-top: 28px; max-width: 36em;
+    font-size: 18px; color: var(--muted);
+  }
+  .hero .cta-row { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    min-height: 48px; padding: 10px 26px;
+    border-radius: 6px; text-decoration: none;
+    font-family: "Archivo", "Noto Sans TC", sans-serif;
+    font-size: 16px; font-weight: 600;
+    transition: transform 0.2s, opacity 0.2s;
+    cursor: pointer;
+  }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
+  .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+
+  /* sections */
+  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  .section-label {
+    font-family: "Archivo", sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--faint);
+    margin-bottom: 40px;
+  }
+  .section-label::before {
+    content: ""; display: inline-block; width: 22px; height: 2px;
+    background: var(--amber); vertical-align: middle; margin-right: 12px;
+  }
+
+  /* what I do */
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
+  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+  .work-item h3 {
+    font-family: "Archivo", "Noto Sans TC", sans-serif;
+    font-size: 19px; font-weight: 700; margin-bottom: 10px;
+  }
+  .work-item p { color: var(--muted); font-size: 16px; }
+
+  /* domains */
+  .domain-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+  @media (max-width: 720px) { .domain-list { grid-template-columns: 1fr; } }
+  .domain-list li {
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 18px 0; border-bottom: 1px solid var(--line);
+    font-size: 17px; font-weight: 500;
+  }
+  .domain-list li::before {
+    content: ""; flex: none; width: 8px; height: 8px; border-radius: 2px;
+    background: var(--amber); transform: translateY(-1px) rotate(45deg);
+  }
+
+  /* background */
+  .bg-block { max-width: 40em; }
+  .bg-block h3 {
+    font-family: "Archivo", "Noto Sans TC", sans-serif;
+    font-size: 19px; font-weight: 700;
+  }
+  .bg-block .period {
+    font-family: "Archivo", sans-serif; font-size: 14px;
+    color: var(--faint); letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+    margin: 4px 0 14px;
+  }
+  .bg-block p { color: var(--muted); }
+  .bg-block + .bg-block { margin-top: 40px; }
+
+  /* contact */
+  .contact-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
+  .contact-note { margin-top: 24px; color: var(--faint); font-size: 15px; }
+  .icon { width: 18px; height: 18px; flex: none; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0 48px;
+    color: var(--faint); font-size: 14px;
+    font-family: "Archivo", sans-serif;
+  }
+
+  /* entrance animation */
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">Grace<span>Flow</span></a>
+    <div class="lang-toggle" role="group" aria-label="語言切換 Language">
+      <button type="button" id="btn-zh" aria-pressed="true">中文</button>
+      <button type="button" id="btn-en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <p class="eyebrow">Amber Chang · AI Project Lead / TPM</p>
+    <h1 data-lang="zh">把模糊的想法，<br>變成可交付的 AI 系統。</h1>
+    <h1 data-lang="en" lang="en">Turning ambiguous ideas into delivered AI systems.</h1>
+    <p class="lede" data-lang="zh">我是張又云 Amber，AI Project Lead / Technical Program Manager。六年以上帶領跨職能團隊，把 AI 專案從概念一路推進到上線交付。</p>
+    <p class="lede" data-lang="en" lang="en">I'm Amber Chang, an AI Project Lead / Technical Program Manager with 6+ years leading cross-functional teams — taking AI projects from concept all the way to production.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#contact"><span data-lang="zh">與我聯繫</span><span data-lang="en" lang="en">Get in touch</span></a>
+      <a class="btn btn-ghost" href="#work"><span data-lang="zh">我做的事</span><span data-lang="en" lang="en">What I do</span></a>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <p class="section-label" data-lang="zh">我做的事</p>
+      <p class="section-label" data-lang="en" lang="en">What I do</p>
+      <div class="grid2">
+        <div class="work-item reveal">
+          <h3 data-lang="zh">需求拆解與執行規劃</h3>
+          <h3 data-lang="en" lang="en">Requirements to execution</h3>
+          <p data-lang="zh">把高層次的概念轉化為可執行的計畫、時程與里程碑，讓每個階段都有明確的目標與驗收標準。</p>
+          <p data-lang="en" lang="en">Translate high-level concepts into structured plans, timelines, and milestones — with clear goals and acceptance criteria at every stage.</p>
+        </div>
+        <div class="work-item reveal">
+          <h3 data-lang="zh">跨職能團隊協調</h3>
+          <h3 data-lang="en" lang="en">Cross-functional alignment</h3>
+          <p data-lang="zh">協調 AI 工程師與系統開發團隊，讓進度對齊、資訊透明，非技術成員也能掌握專案狀態。</p>
+          <p data-lang="en" lang="en">Coordinate AI engineers and system developers to keep progress aligned and visible — even to non-technical stakeholders.</p>
+        </div>
+        <div class="work-item reveal">
+          <h3 data-lang="zh">技術決策支援</h3>
+          <h3 data-lang="en" lang="en">Technical decision-making</h3>
+          <p data-lang="zh">參與模型與系統方向的判斷，建立可觀測的訓練與成效指標，讓「做得好不好」有客觀依據。</p>
+          <p data-lang="en" lang="en">Facilitate model and system direction, and build observable training metrics so "is it working" has an objective answer.</p>
+        </div>
+        <div class="work-item reveal">
+          <h3 data-lang="zh">風險預判與交付把關</h3>
+          <h3 data-lang="en" lang="en">Risk and delivery</h3>
+          <p data-lang="zh">提前辨識風險、即時調整執行方式，守住交付時程，並負責交付後的維運銜接。</p>
+          <p data-lang="en" lang="en">Identify risks early, adjust strategy in time to protect the delivery timeline, and own the handover to operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="domains">
+    <div class="wrap">
+      <p class="section-label" data-lang="zh">領域經驗</p>
+      <p class="section-label" data-lang="en" lang="en">Domains</p>
+      <ul class="domain-list">
+        <li class="reveal"><span data-lang="zh">遊戲 AI 與強化學習</span><span data-lang="en" lang="en">Game AI &amp; reinforcement learning</span></li>
+        <li class="reveal"><span data-lang="zh">企業級 LLM 與 RAG 系統</span><span data-lang="en" lang="en">Enterprise LLM &amp; RAG systems</span></li>
+        <li class="reveal"><span data-lang="zh">電腦視覺與影像辨識</span><span data-lang="en" lang="en">Computer vision &amp; image recognition</span></li>
+        <li class="reveal"><span data-lang="zh">教育科技平台</span><span data-lang="en" lang="en">EdTech platforms</span></li>
+        <li class="reveal"><span data-lang="zh">使用者行為建模</span><span data-lang="en" lang="en">User behavior modeling</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="wrap">
+      <p class="section-label" data-lang="zh">經歷</p>
+      <p class="section-label" data-lang="en" lang="en">Background</p>
+      <div class="bg-block reveal">
+        <h3 data-lang="zh">逢甲大學 人工智慧研究中心｜執行副主任</h3>
+        <h3 data-lang="en" lang="en">AI Research Center, Feng Chia University — Deputy Executive Director</h3>
+        <p class="period">2020 – 2026</p>
+        <p data-lang="zh">以 AI Project Lead / TPM 的角色帶領研究員與工程師團隊，統籌跨產業並行的 AI 專案：從需求工程、時程與成本規劃，到模型交付、系統上線與維運接手。</p>
+        <p data-lang="en" lang="en">Led teams of researchers and engineers as AI Project Lead / TPM, running parallel AI projects across industries — from requirement engineering, scheduling, and budgeting to model delivery, launch, and operations handover.</p>
+      </div>
+      <div class="bg-block reveal">
+        <h3 data-lang="zh">工程博士｜逢甲大學</h3>
+        <h3 data-lang="en" lang="en">Ph.D. in Engineering — Feng Chia University</h3>
+        <p class="period">2021</p>
+        <p data-lang="zh">智慧聯網產業博士學位學程，研究方向為人工智慧領域之電腦視覺應用。</p>
+        <p data-lang="en" lang="en">Industrial Ph.D. program in IoT; research focus on computer vision applications in AI.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <p class="section-label" data-lang="zh">聯絡方式</p>
+      <p class="section-label" data-lang="en" lang="en">Contact</p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="mailto:yunchang1986@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+        <!-- TODO: 填入 LinkedIn 個人檔案網址 -->
+        <a class="btn btn-ghost" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v1.5A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <!-- TODO: 建立 LINE 官方帳號後，把 href 換成 lin.ee 加入好友連結並移除 hidden -->
+        <a class="btn btn-ghost" href="https://lin.ee/PLACEHOLDER" target="_blank" rel="noopener" hidden>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          LINE
+        </a>
+      </div>
+      <p class="contact-note" data-lang="zh">目前開放 AI 專案管理、技術專案顧問與正職機會的討論。</p>
+      <p class="contact-note" data-lang="en" lang="en">Open to conversations about AI program management, technical project consulting, and full-time opportunities.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Amber Chang · graceflow.tw</div>
+</footer>
+
+<script>
+  (function () {
+    var btnZh = document.getElementById('btn-zh');
+    var btnEn = document.getElementById('btn-en');
+    function setLang(lang) {
+      document.body.classList.toggle('en', lang === 'en');
+      document.documentElement.lang = lang === 'en' ? 'en' : 'zh-Hant-TW';
+      btnZh.setAttribute('aria-pressed', String(lang !== 'en'));
+      btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+      try { localStorage.setItem('graceflow-lang', lang); } catch (e) {}
+    }
+    btnZh.addEventListener('click', function () { setLang('zh'); });
+    btnEn.addEventListener('click', function () { setLang('en'); });
+    var saved = null;
+    try { saved = localStorage.getItem('graceflow-lang'); } catch (e) {}
+    if (saved === 'en') setLang('en');
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.15 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } else {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    }
+  })();
+</script>
+</body>
+</html>
