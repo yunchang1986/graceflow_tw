@@ -7,40 +7,44 @@
 <meta name="description" content="Amber Chang — AI Project Lead / Technical Program Manager. 把模糊的想法，變成可交付的 AI 系統。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L14 10 L23 12 L14 14 L12 23 L10 14 L1 12 L10 10 Z' fill='%236C5CA7'/%3E%3C/svg%3E">
 <style>
   :root {
-    --paper: #FAFAF9;
-    --ink: #1C1917;
-    --muted: #57534E;
-    --faint: #79716B;
-    --line: #E7E5E1;
-    --amber: #B45309;
-    --amber-soft: #F5EDE3;
+    --paper: #FAF9FC;
+    --ink: #2E2840;
+    --muted: #5F5876;
+    --faint: #6F678C;
+    --line: #E6E2EF;
+    --accent: #6C5CA7;
+    --accent-soft: #F1EEF8;
+    --gold: #B8862E;
     --card: #FFFFFF;
   }
   :root:not([data-theme="light"]) { }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #171412;
-      --ink: #EDE9E4;
-      --muted: #B8B0A8;
-      --faint: #8F867E;
-      --line: #2E2925;
-      --amber: #E8A33D;
-      --amber-soft: #262019;
-      --card: #1F1B18;
+      --paper: #181423;
+      --ink: #EAE6F4;
+      --muted: #B6AECB;
+      --faint: #9891B3;
+      --line: #2F2946;
+      --accent: #A99BD9;
+      --accent-soft: #241E38;
+      --gold: #E3BC6A;
+      --card: #211C33;
     }
   }
   :root[data-theme="dark"] {
-    --paper: #171412;
-    --ink: #EDE9E4;
-    --muted: #B8B0A8;
-    --faint: #8F867E;
-    --line: #2E2925;
-    --amber: #E8A33D;
-    --amber-soft: #262019;
-    --card: #1F1B18;
+    --paper: #181423;
+    --ink: #EAE6F4;
+    --muted: #B6AECB;
+    --faint: #9891B3;
+    --line: #2F2946;
+    --accent: #A99BD9;
+    --accent-soft: #241E38;
+    --gold: #E3BC6A;
+    --card: #211C33;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -77,11 +81,13 @@
     height: 64px;
   }
   .brand {
-    font-family: "Archivo", sans-serif;
-    font-weight: 700; font-size: 18px; letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Cormorant Garamond", "Noto Serif TC", serif;
+    font-weight: 600; font-size: 23px; letter-spacing: 0.01em;
     color: var(--ink); text-decoration: none;
   }
-  .brand span { color: var(--amber); }
+  .brand svg { display: block; height: 26px; width: auto; }
+  .brand .wm-flow { color: var(--accent); }
   .lang-toggle {
     display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
   }
@@ -91,22 +97,30 @@
     min-height: 40px; transition: color 0.2s, background 0.2s;
   }
   .lang-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-  .lang-toggle button:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+  .lang-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
   /* hero */
   .hero { padding: 96px 0 80px; }
   .eyebrow {
     font-family: "Archivo", sans-serif;
     font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--amber);
+    text-transform: uppercase; color: var(--accent);
     margin-bottom: 24px;
   }
   h1 {
-    font-family: "Archivo", "Noto Sans TC", sans-serif;
-    font-size: clamp(30px, 5.4vw, 52px);
-    font-weight: 700; line-height: 1.25; letter-spacing: -0.01em;
+    font-family: "Cormorant Garamond", "Noto Serif TC", "Times New Roman", serif;
+    font-size: clamp(34px, 6vw, 58px);
+    font-weight: 600; line-height: 1.28; letter-spacing: 0;
     text-wrap: balance;
     max-width: 21em;
+  }
+  h1[data-lang="zh"] { font-weight: 700; }
+  .hero-mark { margin-bottom: 36px; }
+  .hero-mark svg { display: block; width: 190px; height: auto; }
+  .brand-tagline {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 17px; color: var(--faint); letter-spacing: 0.03em;
+    margin-top: 10px;
   }
   .hero p.lede {
     margin-top: 28px; max-width: 36em;
@@ -126,8 +140,8 @@
   .btn-primary { background: var(--ink); color: var(--paper); }
   .btn-primary:hover { opacity: 0.85; }
   .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
-  .btn-ghost:hover { border-color: var(--amber); color: var(--amber); }
-  .btn:focus-visible { outline: 2px solid var(--amber); outline-offset: 2px; }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* sections */
   section { padding: 72px 0; border-top: 1px solid var(--line); }
@@ -139,7 +153,7 @@
   }
   .section-label::before {
     content: ""; display: inline-block; width: 22px; height: 2px;
-    background: var(--amber); vertical-align: middle; margin-right: 12px;
+    background: var(--accent); vertical-align: middle; margin-right: 12px;
   }
 
   /* what I do */
@@ -161,7 +175,7 @@
   }
   .domain-list li::before {
     content: ""; flex: none; width: 8px; height: 8px; border-radius: 2px;
-    background: var(--amber); transform: translateY(-1px) rotate(45deg);
+    background: var(--accent); transform: translateY(-1px) rotate(45deg);
   }
 
   /* background */
@@ -201,7 +215,21 @@
 
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top">Grace<span>Flow</span></a>
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 240 120" role="img" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="hloop" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8F7FC4"/><stop offset="0.5" stop-color="#B7AAD9"/><stop offset="1" stop-color="#6C5CA7"/>
+          </linearGradient>
+          <linearGradient id="hstar" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
+          </linearGradient>
+        </defs>
+        <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#hloop)" stroke-width="9" stroke-linecap="round"/>
+        <path d="M120,22 L126,52 L150,60 L126,68 L120,98 L114,68 L90,60 L114,52 Z" fill="url(#hstar)"/>
+      </svg>
+      <span><span class="wm-grace">grace</span><span class="wm-flow">flow</span></span>
+    </a>
     <div class="lang-toggle" role="group" aria-label="語言切換 Language">
       <button type="button" id="btn-zh" aria-pressed="true">中文</button>
       <button type="button" id="btn-en" aria-pressed="false">EN</button>
@@ -211,6 +239,25 @@
 
 <main id="top">
   <div class="wrap hero">
+    <div class="hero-mark">
+      <svg viewBox="0 0 240 120" role="img" aria-label="GraceFlow — 流動曲線與光十字標誌">
+        <defs>
+          <linearGradient id="loopg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8F7FC4"/><stop offset="0.5" stop-color="#B7AAD9"/><stop offset="1" stop-color="#6C5CA7"/>
+          </linearGradient>
+          <linearGradient id="starg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
+          </linearGradient>
+          <radialGradient id="glowg">
+            <stop offset="0" stop-color="#E9C87E" stop-opacity="0.5"/><stop offset="1" stop-color="#E9C87E" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#loopg)" stroke-width="5.5" stroke-linecap="round"/>
+        <circle cx="120" cy="60" r="28" fill="url(#glowg)"/>
+        <path d="M120,24 L125,52 L146,60 L125,68 L120,96 L115,68 L94,60 L115,52 Z" fill="url(#starg)"/>
+      </svg>
+      <p class="brand-tagline">Grace in the Flow, Light in the Path</p>
+    </div>
     <p class="eyebrow">Amber Chang · AI Project Lead / TPM</p>
     <h1 data-lang="zh">把模糊的想法，<br>變成可交付的 AI 系統。</h1>
     <h1 data-lang="en" lang="en">Turning ambiguous ideas into delivered AI systems.</h1>
@@ -317,7 +364,7 @@
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Amber Chang · graceflow.tw</div>
+  <div class="wrap">© 2026 Amber Chang · graceflow.tw · <em>Grace in the Flow, Light in the Path</em></div>
 </footer>
 
 <script>
