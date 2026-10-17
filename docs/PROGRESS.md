@@ -31,3 +31,10 @@
 ### 相關檔案
 - 正式個人資料：`~/Downloads/Amber_Chang_正式資料_official_20260819.txt`
 - 履歷素材彙整：`~/Downloads/amber-cv-source-consolidated-20260819.md`
+
+## 2026-10-18 Brand Kit 總覽板
+
+- 產出 3×3 品牌識別總覽板：`docs/brand/graceflow-brandkit.png`（3200×2400），原始檔 `docs/brand/brandkit.html`
+- 作法：AI 生圖兩條路都失敗（Gemini 免費額度用盡、Azure gpt-image-2 回 `response_format` 參數錯誤），改用 HTML + 網站原始 SVG 標誌，以 headless Chrome 渲染；好處是標誌、色碼、字體與網站 100% 一致
+- 九格：主標誌 / 標誌構成 / 網站 / 品牌核心句 / 色彩 / 字體 / 名片 / 影像方向 / 系統元件
+- 重新輸出：`"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --force-device-scale-factor=2 --window-size=1600,1200 --virtual-time-budget=8000 --screenshot=docs/brand/graceflow-brandkit.png file://$PWD/docs/brand/brandkit.html`
