@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>GraceFlow Logo Proposals II</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+TC:wght@500;600;700&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Archivo:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #120F1A; --night: #181423; --night-2: #211C33; --line-d: #2F2946;
+    --paper: #FAF9FC; --mist: #F1EEF8; --ink: #2E2840; --muted: #5F5876;
+    --lav: #6C5CA7; --lilac: #A99BD9; --gold: #B8862E; --gold-l: #E3BC6A;
+    --serif: "Cormorant Garamond", "Noto Serif TC", serif;
+    --mono: "IBM Plex Mono", monospace;
+    --sans: "Archivo", "Noto Sans TC", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 1560px; background: var(--canvas); overflow: hidden; }
+  body { font-family: var(--sans); -webkit-font-smoothing: antialiased; padding: 40px; display: grid; grid-template-rows: auto 1fr 1fr 1fr; gap: 20px; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; color: #8F86AE; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; padding: 0 4px; }
+  .head b { font-family: var(--serif); font-size: 22px; letter-spacing: .02em; text-transform: none; color: #EAE6F4; font-weight: 500; }
+  .row { display: grid; grid-template-columns: 330px 1fr 1fr 250px; gap: 20px; }
+  .p { position: relative; border-radius: 14px; overflow: hidden; }
+  .num { position: absolute; right: 20px; bottom: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: #8C84A6; text-transform: uppercase; }
+  .tag { position: absolute; left: 20px; bottom: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: #8C84A6; text-transform: uppercase; }
+  .center { display: grid; place-items: center; height: 100%; }
+
+  .info { background: var(--night); padding: 30px 28px; color: #EAE6F4; }
+  .info .k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--gold-l); }
+  .info h2 { margin-top: 14px; font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 30px; letter-spacing: .04em; }
+  .info h2 small { display: block; margin-top: 2px; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 20px; color: var(--lilac); letter-spacing: .01em; }
+  .info p { margin-top: 20px; font-family: "Noto Sans TC", sans-serif; font-size: 14.5px; line-height: 1.75; color: #B6AECB; }
+  .info p em { font-style: normal; color: #EAE6F4; }
+  .info .m { position: absolute; left: 28px; bottom: 26px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: #6F678C; text-transform: uppercase; }
+
+  .light { background: var(--paper); }
+  .dark { background: var(--night-2); }
+  .lock { display: flex; align-items: center; gap: 22px; }
+  .lock.v { flex-direction: column; gap: 18px; }
+
+  .wA { font-family: var(--serif); font-weight: 600; font-size: 50px; letter-spacing: .005em; line-height: 1; }
+  .wB { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 42px; letter-spacing: -.02em; line-height: 1; }
+  .wC { font-family: var(--serif); font-weight: 500; font-size: 30px; letter-spacing: .32em; line-height: 1; padding-left: .32em; }
+  .light .w { color: var(--ink); } .dark .w { color: #EAE6F4; }
+  .wB .f { color: var(--lav); } .dark .wB .f { color: var(--lilac); }
+  .sub { font-family: "Noto Serif TC", serif; font-size: 12px; letter-spacing: .6em; padding-left: .6em; color: var(--muted); }
+  .dark .sub { color: #8F86AE; }
+
+  .icons { background: var(--mist); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px; }
+  .icons .r { display: flex; align-items: flex-end; gap: 16px; }
+  .app { width: 84px; height: 84px; border-radius: 20px; display: grid; place-items: center; box-shadow: 0 12px 22px -12px rgba(30,24,48,.5); }
+  .app.d { background: linear-gradient(160deg, #2E2840, #181423); }
+  .app.l { background: #fff; box-shadow: 0 12px 22px -12px rgba(30,24,48,.35), inset 0 0 0 1px #E6E2EF; }
+  .fav { display: grid; place-items: center; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px #E6E2EF; }
+  .sizes { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: #8C84A6; }
+  .wD { font-family: var(--serif); font-weight: 600; font-size: 54px; letter-spacing: .01em; line-height: 1; }
+  .wE { font-family: "Archivo", sans-serif; font-weight: 500; font-size: 30px; letter-spacing: .14em; line-height: 1; text-transform: uppercase; }
+  .wE .f { color: var(--lav); } .dark .wE .f { color: var(--lilac); }
+  .wF { font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 40px; letter-spacing: .3em; padding-left: .3em; line-height: 1; }
+  .wF2 { font-family: var(--serif); font-weight: 500; font-size: 15px; letter-spacing: .5em; padding-left: .5em; color: var(--muted); }
+  .dark .wF2 { color: #8F86AE; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="lavg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A99BD9"/><stop offset="1" stop-color="#6C5CA7"/>
+    </linearGradient>
+    <linearGradient id="lavgD" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D4CAF0"/><stop offset="1" stop-color="#A99BD9"/>
+    </linearGradient>
+    <linearGradient id="goldg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
+    </linearGradient>
+
+    <!-- A · 光心 G：一筆連續的 G，中心一點光 -->
+    <symbol id="D" viewBox="0 0 120 120">
+      <circle cx="44" cy="56" r="18" fill="none" stroke="url(#lavg)" stroke-width="9"/>
+      <path d="M88,22 C76,14 62,18 62,34 L62,86 C62,100 50,106 34,99" fill="none" stroke="url(#lavg)" stroke-width="9" stroke-linecap="round"/>
+      <line x1="72" y1="46" x2="92" y2="46" stroke="#D4A248" stroke-width="9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="Dd" viewBox="0 0 120 120">
+      <circle cx="44" cy="56" r="18" fill="none" stroke="url(#lavgD)" stroke-width="9"/>
+      <path d="M88,22 C76,14 62,18 62,34 L62,86 C62,100 50,106 34,99" fill="none" stroke="url(#lavgD)" stroke-width="9" stroke-linecap="round"/>
+      <line x1="72" y1="46" x2="92" y2="46" stroke="#D4A248" stroke-width="9" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="E" viewBox="0 0 120 120">
+      <path d="M18,94 C52,94 44,60 60,60 C76,60 68,26 100,26" fill="none" stroke="url(#lavg)" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="18" cy="94" r="7" fill="#A99BD9"/>
+      <circle cx="60" cy="60" r="10" fill="#FAF9FC"/><circle cx="60" cy="60" r="6" fill="url(#lavg)"/>
+      <circle cx="100" cy="26" r="11" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Ed" viewBox="0 0 120 120">
+      <path d="M18,94 C52,94 44,60 60,60 C76,60 68,26 100,26" fill="none" stroke="url(#lavgD)" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="18" cy="94" r="7" fill="#6C5CA7"/>
+      <circle cx="60" cy="60" r="10" fill="#211C33"/><circle cx="60" cy="60" r="6" fill="url(#lavgD)"/>
+      <circle cx="100" cy="26" r="11" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="F" viewBox="0 0 120 120">
+      <path d="M28,106 L28,50 A32,32 0 0,1 92,50 L92,106 Z" fill="url(#lavg)"/>
+      <path d="M42,106 C50,86 64,74 58.5,56 L61.5,56 C66,74 60,88 78,106 Z" fill="url(#goldg)"/>
+      <circle cx="60" cy="42" r="7" fill="#E9C87E"/>
+    </symbol>
+    <symbol id="Fd" viewBox="0 0 120 120">
+      <path d="M28,106 L28,50 A32,32 0 0,1 92,50 L92,106 Z" fill="url(#lavgD)"/>
+      <path d="M42,106 C50,86 64,74 58.5,56 L61.5,56 C66,74 60,88 78,106 Z" fill="url(#goldg)"/>
+      <circle cx="60" cy="42" r="7" fill="#E9C87E"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="head"><b>GraceFlow — Logo 提案 II</b><span>Three more directions · 2026.10</span></div>
+<div class="row">
+  <section class="p info">
+    <div class="k">PROPOSAL D · LIGATURE</div>
+    <h2>連字 gf<small>The gf Ligature</small></h2>
+    <p>g 與 f 共用一根直筆：上端向右彎是 f、下端向左收是 g，整個字形就是一道 <em>S 形的流</em>。f 的橫筆換成<em>金色</em>，是往前延伸的那一段路。</p>
+    <div class="m">字體設計 · 最有質感、最像精品</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock"><svg width="100" height="100"><use href="#D"/></svg><div class="w wD">graceflow</div></div></div><span class="num">D1</span></section>
+  <section class="p dark"><div class="center"><div class="lock v"><svg width="116" height="116"><use href="#Dd"/></svg><div class="w wD" style="font-size:44px">graceflow</div></div></div><span class="num">D2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="58" height="58"><use href="#Dd"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="30" height="30"><use href="#D"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="16" height="16"><use href="#D"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+<div class="row">
+  <section class="p info">
+    <div class="k">PROPOSAL E · ROADMAP</div>
+    <h2>里程<small>Milestones</small></h2>
+    <p>一條從左下爬到右上的流線，串起三個節點：<em>起點、里程碑、交付</em>。最後一點是金色的光——把模糊的想法，一步步帶到可交付的終點。</p>
+    <div class="m">產品動作 · 最像專案路線圖</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock"><svg width="96" height="96"><use href="#E"/></svg><div class="w wE">Grace<span class="f">Flow</span></div></div></div><span class="num">E1</span></section>
+  <section class="p dark"><div class="center"><div class="lock v"><svg width="112" height="112"><use href="#Ed"/></svg><div class="w wE" style="font-size:26px">Grace<span class="f">Flow</span></div></div></div><span class="num">E2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="60" height="60"><use href="#Ed"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="30" height="30"><use href="#E"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="16" height="16"><use href="#E"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+<div class="row">
+  <section class="p info">
+    <div class="k">PROPOSAL F · NEGATIVE SPACE</div>
+    <h2>光之門<small>The Arch of Light</small></h2>
+    <p>一扇拱門，門裡有一條<em>金色小徑</em>由寬漸窄、蜿蜒向遠方，盡頭是一點光。拱門是「恩典」的安靜暗示，小徑是 Flow，終點是 <em>Light in the Path</em>。</p>
+    <div class="m">負空間 · 最有溫度、中文最好搭</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock v"><svg width="100" height="100"><use href="#F"/></svg><div class="w wF">恩典流動</div><div class="wF2">GRACEFLOW</div></div></div><span class="num">F1</span></section>
+  <section class="p dark"><div class="center"><div class="lock"><svg width="92" height="92"><use href="#Fd"/></svg><div><div class="w wF" style="font-size:32px">恩典流動</div><div class="wF2" style="margin-top:12px">GRACEFLOW</div></div></div></div><span class="num">F2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="58" height="58"><use href="#Fd"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="30" height="30"><use href="#F"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="16" height="16"><use href="#F"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+</body>
+</html>
