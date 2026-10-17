@@ -57,4 +57,6 @@
 - B「匯流 Confluence」：三線匯成一線指向金點＝跨職能對齊→交付
 - C「水上之光」：圓形印記，地平線上的光與倒影之路＝Light in the Path
 - 第二輪（`docs/brand/graceflow-logo-proposals-2.png`，原始檔 `logo-proposals-2.html`）：D「連字 gf」g/f 共用直筆＋金色橫筆；E「里程」三節點流線，終點金光；F「光之門」拱門＋由寬漸窄的金色小徑（注意：容易被看成門中人影）
-- 待決：使用者從 A–F 選定方向 → 精修（字距、16px 版本）→ 換上網站與 favicon、更新 brand kit
+- 顧問角色評估：推薦 D（連字 gf），B 次之；E、F 不建議（F 有宗教聯想風險）
+- ∞ 重新設計（`docs/brand/graceflow-logo-infinity.png`，原始檔 `logo-infinity.html`）：∞1 開放的 ∞（缺口留金光）、∞2 交會的 ∞（上下交錯、金色上筆＝客戶與顧問交會）、∞3 精修現行版；顧問角色推薦 ∞2
+- 待決：使用者選定方向 → 精修（字距、16px 版本）→ 換上網站與 favicon、更新 brand kit

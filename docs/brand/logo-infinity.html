@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>GraceFlow Infinity Redesign</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Archivo:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #120F1A; --night: #181423; --night-2: #211C33; --line-d: #2F2946;
+    --paper: #FAF9FC; --mist: #F1EEF8; --ink: #2E2840; --muted: #5F5876;
+    --lav: #6C5CA7; --lilac: #A99BD9; --gold: #B8862E; --gold-l: #E3BC6A;
+    --serif: "Cormorant Garamond", "Noto Serif TC", serif;
+    --mono: "IBM Plex Mono", monospace;
+    --sans: "Archivo", "Noto Sans TC", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 2040px; background: var(--canvas); overflow: hidden; }
+  body { font-family: var(--sans); -webkit-font-smoothing: antialiased; padding: 40px; display: grid; grid-template-rows: auto 1fr 1fr 1fr 1fr; gap: 20px; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; color: #8F86AE; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; padding: 0 4px; }
+  .head b { font-family: var(--serif); font-size: 22px; letter-spacing: .02em; text-transform: none; color: #EAE6F4; font-weight: 500; }
+  .row { display: grid; grid-template-columns: 330px 1fr 1fr 250px; gap: 20px; }
+  .p { position: relative; border-radius: 14px; overflow: hidden; }
+  .num { position: absolute; right: 20px; bottom: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: #8C84A6; text-transform: uppercase; }
+  .tag { position: absolute; left: 20px; bottom: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: #8C84A6; text-transform: uppercase; }
+  .center { display: grid; place-items: center; height: 100%; }
+
+  .info { background: var(--night); padding: 30px 28px; color: #EAE6F4; }
+  .info .k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--gold-l); }
+  .info h2 { margin-top: 14px; font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 30px; letter-spacing: .04em; }
+  .info h2 small { display: block; margin-top: 2px; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 20px; color: var(--lilac); letter-spacing: .01em; }
+  .info p { margin-top: 20px; font-family: "Noto Sans TC", sans-serif; font-size: 14.5px; line-height: 1.75; color: #B6AECB; }
+  .info p em { font-style: normal; color: #EAE6F4; }
+  .info .m { position: absolute; left: 28px; bottom: 26px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: #6F678C; text-transform: uppercase; }
+
+  .light { background: var(--paper); }
+  .dark { background: var(--night-2); }
+  .lock { display: flex; align-items: center; gap: 22px; }
+  .lock.v { flex-direction: column; gap: 18px; }
+
+  .wA { font-family: var(--serif); font-weight: 600; font-size: 50px; letter-spacing: .005em; line-height: 1; }
+  .wB { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 42px; letter-spacing: -.02em; line-height: 1; }
+  .wC { font-family: var(--serif); font-weight: 500; font-size: 30px; letter-spacing: .32em; line-height: 1; padding-left: .32em; }
+  .light .w { color: var(--ink); } .dark .w { color: #EAE6F4; }
+  .wB .f { color: var(--lav); } .dark .wB .f { color: var(--lilac); }
+  .sub { font-family: "Noto Serif TC", serif; font-size: 12px; letter-spacing: .6em; padding-left: .6em; color: var(--muted); }
+  .dark .sub { color: #8F86AE; }
+
+  .icons { background: var(--mist); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px; }
+  .icons .r { display: flex; align-items: flex-end; gap: 16px; }
+  .app { width: 84px; height: 84px; border-radius: 20px; display: grid; place-items: center; box-shadow: 0 12px 22px -12px rgba(30,24,48,.5); }
+  .app.d { background: linear-gradient(160deg, #2E2840, #181423); }
+  .app.l { background: #fff; box-shadow: 0 12px 22px -12px rgba(30,24,48,.35), inset 0 0 0 1px #E6E2EF; }
+  .fav { display: grid; place-items: center; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px #E6E2EF; }
+  .sizes { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: #8C84A6; }
+  .wI { font-family: var(--serif); font-weight: 600; font-size: 46px; letter-spacing: .01em; line-height: 1; }
+  .cap { margin-top: 10px; font-family: "Noto Sans TC", sans-serif; font-size: 12px; letter-spacing: .32em; color: var(--muted); }
+  .dark .cap { color: #8F86AE; }
+  .orig .info { background: #1A1626; }
+  .orig .info .k { color: #8F86AE; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="lavg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A99BD9"/><stop offset="1" stop-color="#6C5CA7"/>
+    </linearGradient>
+    <linearGradient id="lavgD" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D4CAF0"/><stop offset="1" stop-color="#A99BD9"/>
+    </linearGradient>
+    <linearGradient id="goldg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
+    </linearGradient>
+
+    <!-- A · 光心 G：一筆連續的 G，中心一點光 -->
+    <radialGradient id="glow"><stop offset="0" stop-color="#E9C87E" stop-opacity="0.5"/><stop offset="1" stop-color="#E9C87E" stop-opacity="0"/></radialGradient>
+    <symbol id="O" viewBox="0 0 240 120">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#lavg)" stroke-width="5.5" stroke-linecap="round"/>
+      <circle cx="120" cy="60" r="28" fill="url(#glow)"/>
+      <path d="M120,24 L125,52 L146,60 L125,68 L120,96 L115,68 L94,60 L115,52 Z" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="P" viewBox="0 0 240 120">
+      <path d="M120,60 C88,92 20,92 20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,36 186,27 156,39" fill="none" stroke="url(#lavg)" stroke-width="11" stroke-linecap="round"/>
+      <circle cx="136" cy="49" r="8" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Q" viewBox="0 0 240 120">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#lavg)" stroke-width="11" stroke-linecap="round"/>
+      <line x1="103.5" y1="47.8" x2="136.5" y2="72.2" stroke="#FAF9FC" stroke-width="23" stroke-linecap="butt"/>
+      <line x1="102" y1="46.7" x2="138" y2="73.3" stroke="#C99A45" stroke-width="11" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="R" viewBox="0 0 240 120">
+      <path d="M36,60 C36,32 94,32 120,60 C146,88 204,88 204,60 C204,32 146,32 120,60 C94,88 36,88 36,60 Z" fill="none" stroke="url(#lavg)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M120,30 L123.5,55 L132,60 L123.5,65 L120,90 L116.5,65 L108,60 L116.5,55 Z" fill="url(#goldg)" stroke="#FAF9FC" stroke-width="5" paint-order="stroke"/>
+    </symbol>
+    <symbol id="Od" viewBox="0 0 240 120">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#lavgD)" stroke-width="5.5" stroke-linecap="round"/>
+      <circle cx="120" cy="60" r="28" fill="url(#glow)"/>
+      <path d="M120,24 L125,52 L146,60 L125,68 L120,96 L115,68 L94,60 L115,52 Z" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Pd" viewBox="0 0 240 120">
+      <path d="M120,60 C88,92 20,92 20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,36 186,27 156,39" fill="none" stroke="url(#lavgD)" stroke-width="11" stroke-linecap="round"/>
+      <circle cx="136" cy="49" r="8" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Qd" viewBox="0 0 240 120">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#lavgD)" stroke-width="11" stroke-linecap="round"/>
+      <line x1="103.5" y1="47.8" x2="136.5" y2="72.2" stroke="#211C33" stroke-width="23" stroke-linecap="butt"/>
+      <line x1="102" y1="46.7" x2="138" y2="73.3" stroke="#E3BC6A" stroke-width="11" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="Rd" viewBox="0 0 240 120">
+      <path d="M36,60 C36,32 94,32 120,60 C146,88 204,88 204,60 C204,32 146,32 120,60 C94,88 36,88 36,60 Z" fill="none" stroke="url(#lavgD)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M120,30 L123.5,55 L132,60 L123.5,65 L120,90 L116.5,65 L108,60 L116.5,55 Z" fill="url(#goldg)" stroke="#211C33" stroke-width="5" paint-order="stroke"/>
+    </symbol>
+    <symbol id="Oa" viewBox="0 0 240 120">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#lavgD)" stroke-width="5.5" stroke-linecap="round"/>
+      <circle cx="120" cy="60" r="28" fill="url(#glow)"/>
+      <path d="M120,24 L125,52 L146,60 L125,68 L120,96 L115,68 L94,60 L115,52 Z" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Pa" viewBox="0 0 240 120">
+      <path d="M120,60 C88,92 20,92 20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,36 186,27 156,39" fill="none" stroke="url(#lavgD)" stroke-width="11" stroke-linecap="round"/>
+      <circle cx="136" cy="49" r="8" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Qa" viewBox="0 0 240 120">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#lavgD)" stroke-width="11" stroke-linecap="round"/>
+      <line x1="103.5" y1="47.8" x2="136.5" y2="72.2" stroke="#221D31" stroke-width="23" stroke-linecap="butt"/>
+      <line x1="102" y1="46.7" x2="138" y2="73.3" stroke="#E3BC6A" stroke-width="11" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="Ra" viewBox="0 0 240 120">
+      <path d="M36,60 C36,32 94,32 120,60 C146,88 204,88 204,60 C204,32 146,32 120,60 C94,88 36,88 36,60 Z" fill="none" stroke="url(#lavgD)" stroke-width="9" stroke-linecap="round"/>
+      <path d="M120,30 L123.5,55 L132,60 L123.5,65 L120,90 L116.5,65 L108,60 L116.5,55 Z" fill="url(#goldg)" stroke="#221D31" stroke-width="5" paint-order="stroke"/>
+    </symbol>
+  </defs>
+</svg>
+<div class="head"><b>GraceFlow — 無限符號重新設計</b><span>Infinity, reconsidered · 2026.10</span></div>
+<div class="row orig">
+  <section class="p info">
+    <div class="k">CURRENT · 現行版本</div>
+    <h2>現行 ∞ + 光十字<small>Light Cross Flow</small></h2>
+    <p>細線無限符號，交叉點蓋一顆四芒星。意義清楚，但<em>∞ 本身非常常見</em>，星芒讀起來像「AI 閃光」，交叉點被遮住後，∞ 最有趣的那一筆反而看不到。</p>
+    <div class="m">對照組</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock v">
+    <svg width="210" height="105"><use href="#O"/></svg>
+    <div style="text-align:center"><div class="w wI">GraceFlow</div><div class="cap">AI 專案顧問</div></div>
+  </div></div><span class="num">O1</span></section>
+  <section class="p dark"><div class="center"><div class="lock">
+    <svg width="150" height="75"><use href="#Od"/></svg><div class="w wI" style="font-size:38px">GraceFlow</div>
+  </div></div><span class="num">O2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="70" height="35"><use href="#Oa"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="34" height="17"><use href="#O"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="18" height="9"><use href="#O"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+<div class="row ">
+  <section class="p info">
+    <div class="k">PROPOSAL ∞1 · OPEN</div>
+    <h2>開放的 ∞<small>The Open Loop</small></h2>
+    <p>一筆畫完 ∞，但<em>最後一段刻意不閉合</em>，缺口處留一點金光。流程可以持續，但每一輪都要<em>落地成一個交付</em>——這正是顧問該帶來的東西。</p>
+    <div class="m">與一般 ∞ 拉開距離 · 最有觀點</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock v">
+    <svg width="210" height="105"><use href="#P"/></svg>
+    <div style="text-align:center"><div class="w wI">GraceFlow</div><div class="cap">AI 專案顧問</div></div>
+  </div></div><span class="num">P1</span></section>
+  <section class="p dark"><div class="center"><div class="lock">
+    <svg width="150" height="75"><use href="#Pd"/></svg><div class="w wI" style="font-size:38px">GraceFlow</div>
+  </div></div><span class="num">P2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="70" height="35"><use href="#Pa"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="34" height="17"><use href="#P"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="18" height="9"><use href="#P"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+<div class="row ">
+  <section class="p info">
+    <div class="k">PROPOSAL ∞2 · CROSSING</div>
+    <h2>交會的 ∞<small>The Crossing</small></h2>
+    <p>保留完整的 ∞，把交叉點做成真正的<em>上下交錯</em>，壓在上面的那一筆是金色。兩個迴圈是<em>客戶與顧問</em>，金色那一筆是雙方交會、推動前進的關鍵一步。</p>
+    <div class="m">保留辨識度 · 最像顧問</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock v">
+    <svg width="210" height="105"><use href="#Q"/></svg>
+    <div style="text-align:center"><div class="w wI">GraceFlow</div><div class="cap">AI 專案顧問</div></div>
+  </div></div><span class="num">Q1</span></section>
+  <section class="p dark"><div class="center"><div class="lock">
+    <svg width="150" height="75"><use href="#Qd"/></svg><div class="w wI" style="font-size:38px">GraceFlow</div>
+  </div></div><span class="num">Q2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="70" height="35"><use href="#Qa"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="34" height="17"><use href="#Q"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="18" height="9"><use href="#Q"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+<div class="row ">
+  <section class="p info">
+    <div class="k">PROPOSAL ∞3 · REFINED</div>
+    <h2>精修現行版<small>The Refined Original</small></h2>
+    <p>最小幅度的演進：∞ 比例收窄、線條加粗，小尺寸更穩；星芒縮小並與線條<em>留白分離</em>，看得到交叉。<em>網站與既有素材幾乎不用重做</em>。</p>
+    <div class="m">延續性最高 · 風險最低</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock v">
+    <svg width="210" height="105"><use href="#R"/></svg>
+    <div style="text-align:center"><div class="w wI">GraceFlow</div><div class="cap">AI 專案顧問</div></div>
+  </div></div><span class="num">R1</span></section>
+  <section class="p dark"><div class="center"><div class="lock">
+    <svg width="150" height="75"><use href="#Rd"/></svg><div class="w wI" style="font-size:38px">GraceFlow</div>
+  </div></div><span class="num">R2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="70" height="35"><use href="#Ra"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="34" height="17"><use href="#R"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="18" height="9"><use href="#R"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+</body>
+</html>
