@@ -38,3 +38,14 @@
 - 作法：AI 生圖兩條路都失敗（Gemini 免費額度用盡、Azure gpt-image-2 回 `response_format` 參數錯誤），改用 HTML + 網站原始 SVG 標誌，以 headless Chrome 渲染；好處是標誌、色碼、字體與網站 100% 一致
 - 九格：主標誌 / 標誌構成 / 網站 / 品牌核心句 / 色彩 / 字體 / 名片 / 影像方向 / 系統元件
 - 重新輸出：`"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars --force-device-scale-factor=2 --window-size=1600,1200 --virtual-time-budget=8000 --screenshot=docs/brand/graceflow-brandkit.png file://$PWD/docs/brand/brandkit.html`
+
+## 2026-10-18 UI/UX 稽核修正（index.html）
+
+- 修：hero 在手機上左右沒有內距（`.hero` 的 padding 蓋掉 `.wrap` 的 24px 側距），文字貼齊螢幕邊緣；手機版上方留白縮為 56px
+- 修：`.reveal` 淡入動畫改由 `html.js` 控制，JS 失效時內容不再整段隱形
+- 修：錨點跳轉被 sticky header 遮住 → section 加 `scroll-margin-top: 64px`
+- 修：標題層級 h1→h3 跳級 → 區塊標籤改為 h2（外觀不變）
+- 修：語言切換按鈕高度 40→44px（觸控目標）；品牌連結補 focus-visible 外框
+- 修：手機版 h1 最後一行只剩「統。」→「AI 系統。」不斷行
+- 已檢查：文字對比淺色/深色模式皆 ≥ 5:1（AA 通過）
+- 未做（建議）：Open Graph 分享預覽（og:title / og:image），LinkedIn 分享時目前沒有預覽圖

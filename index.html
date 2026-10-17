@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L14 10 L23 12 L14 14 L12 23 L10 14 L1 12 L10 10 Z' fill='%236C5CA7'/%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js');</script>
 <style>
   :root {
     --paper: #FAF9FC;
@@ -94,13 +95,14 @@
   .lang-toggle button {
     appearance: none; border: 0; background: transparent; color: var(--faint);
     font: inherit; font-size: 14px; padding: 8px 16px; cursor: pointer;
-    min-height: 40px; transition: color 0.2s, background 0.2s;
+    min-height: 44px; transition: color 0.2s, background 0.2s;
   }
   .lang-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
   .lang-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 
   /* hero */
-  .hero { padding: 96px 0 80px; }
+  .hero { padding-top: 96px; padding-bottom: 80px; }
+  @media (max-width: 600px) { .hero { padding-top: 56px; padding-bottom: 64px; } }
   .eyebrow {
     font-family: "Archivo", sans-serif;
     font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
@@ -115,6 +117,7 @@
     max-width: 21em;
   }
   h1[data-lang="zh"] { font-weight: 700; }
+  .nobr { white-space: nowrap; }
   .hero-mark { margin-bottom: 36px; }
   .hero-mark svg { display: block; width: 190px; height: auto; }
   .brand-tagline {
@@ -141,10 +144,11 @@
   .btn-primary:hover { opacity: 0.85; }
   .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
   .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
   /* sections */
-  section { padding: 72px 0; border-top: 1px solid var(--line); }
+  section { padding: 72px 0; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
   .section-label {
     font-family: "Archivo", sans-serif;
     font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
@@ -206,9 +210,9 @@
   }
 
   /* entrance animation */
-  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-  .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
 </style>
 </head>
 <body>
@@ -259,7 +263,7 @@
       <p class="brand-tagline">Grace in the Flow, Light in the Path</p>
     </div>
     <p class="eyebrow">Amber Chang · AI Project Lead / TPM</p>
-    <h1 data-lang="zh">把模糊的想法，<br>變成可交付的 AI 系統。</h1>
+    <h1 data-lang="zh">把模糊的想法，<br>變成可交付的 <span class="nobr">AI 系統。</span></h1>
     <h1 data-lang="en" lang="en">Turning ambiguous ideas into delivered AI systems.</h1>
     <p class="lede" data-lang="zh">我是張又云 Amber，AI Project Lead / Technical Program Manager。六年以上帶領跨職能團隊，把 AI 專案從概念一路推進到上線交付。</p>
     <p class="lede" data-lang="en" lang="en">I'm Amber Chang, an AI Project Lead / Technical Program Manager with 6+ years leading cross-functional teams — taking AI projects from concept all the way to production.</p>
@@ -271,8 +275,8 @@
 
   <section id="work">
     <div class="wrap">
-      <p class="section-label" data-lang="zh">我做的事</p>
-      <p class="section-label" data-lang="en" lang="en">What I do</p>
+      <h2 class="section-label" data-lang="zh">我做的事</h2>
+      <h2 class="section-label" data-lang="en" lang="en">What I do</h2>
       <div class="grid2">
         <div class="work-item reveal">
           <h3 data-lang="zh">需求拆解與執行規劃</h3>
@@ -304,8 +308,8 @@
 
   <section id="domains">
     <div class="wrap">
-      <p class="section-label" data-lang="zh">領域經驗</p>
-      <p class="section-label" data-lang="en" lang="en">Domains</p>
+      <h2 class="section-label" data-lang="zh">領域經驗</h2>
+      <h2 class="section-label" data-lang="en" lang="en">Domains</h2>
       <ul class="domain-list">
         <li class="reveal"><span data-lang="zh">遊戲 AI 與強化學習</span><span data-lang="en" lang="en">Game AI &amp; reinforcement learning</span></li>
         <li class="reveal"><span data-lang="zh">企業級 LLM 與 RAG 系統</span><span data-lang="en" lang="en">Enterprise LLM &amp; RAG systems</span></li>
@@ -318,8 +322,8 @@
 
   <section id="background">
     <div class="wrap">
-      <p class="section-label" data-lang="zh">經歷</p>
-      <p class="section-label" data-lang="en" lang="en">Background</p>
+      <h2 class="section-label" data-lang="zh">經歷</h2>
+      <h2 class="section-label" data-lang="en" lang="en">Background</h2>
       <div class="bg-block reveal">
         <h3 data-lang="zh">逢甲大學 人工智慧研究中心｜執行副主任</h3>
         <h3 data-lang="en" lang="en">AI Research Center, Feng Chia University — Deputy Executive Director</h3>
@@ -339,8 +343,8 @@
 
   <section id="contact">
     <div class="wrap">
-      <p class="section-label" data-lang="zh">聯絡方式</p>
-      <p class="section-label" data-lang="en" lang="en">Contact</p>
+      <h2 class="section-label" data-lang="zh">聯絡方式</h2>
+      <h2 class="section-label" data-lang="en" lang="en">Contact</h2>
       <div class="contact-row">
         <a class="btn btn-primary" href="mailto:yunchang1986@gmail.com">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
