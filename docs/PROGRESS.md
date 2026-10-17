@@ -49,3 +49,11 @@
 - 修：手機版 h1 最後一行只剩「統。」→「AI 系統。」不斷行
 - 已檢查：文字對比淺色/深色模式皆 ≥ 5:1（AA 通過）
 - 未做（建議）：Open Graph 分享預覽（og:title / og:image），LinkedIn 分享時目前沒有預覽圖
+
+## 2026-10-18 Logo 重新設計：三個提案
+
+- 提案板：`docs/brand/graceflow-logo-proposals.png`，原始檔 `docs/brand/logo-proposals.html`（SVG 手繪，與網站同色系）
+- A「光心 G」：一筆開口 G + 中心金點；原本帶橫槓的版本太像 Google G，已改成短收尾
+- B「匯流 Confluence」：三線匯成一線指向金點＝跨職能對齊→交付
+- C「水上之光」：圓形印記，地平線上的光與倒影之路＝Light in the Path
+- 待決：使用者選定方向 → 精修（字距、16px 版本）→ 換上網站與 favicon、更新 brand kit

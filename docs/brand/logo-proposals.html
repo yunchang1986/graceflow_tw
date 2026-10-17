@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>GraceFlow Logo Proposals</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+TC:wght@500;600&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Archivo:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --canvas: #120F1A; --night: #181423; --night-2: #211C33; --line-d: #2F2946;
+    --paper: #FAF9FC; --mist: #F1EEF8; --ink: #2E2840; --muted: #5F5876;
+    --lav: #6C5CA7; --lilac: #A99BD9; --gold: #B8862E; --gold-l: #E3BC6A;
+    --serif: "Cormorant Garamond", "Noto Serif TC", serif;
+    --mono: "IBM Plex Mono", monospace;
+    --sans: "Archivo", "Noto Sans TC", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 1560px; background: var(--canvas); overflow: hidden; }
+  body { font-family: var(--sans); -webkit-font-smoothing: antialiased; padding: 40px; display: grid; grid-template-rows: auto 1fr 1fr 1fr; gap: 20px; }
+  .head { display: flex; justify-content: space-between; align-items: baseline; color: #8F86AE; font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; padding: 0 4px; }
+  .head b { font-family: var(--serif); font-size: 22px; letter-spacing: .02em; text-transform: none; color: #EAE6F4; font-weight: 500; }
+  .row { display: grid; grid-template-columns: 330px 1fr 1fr 250px; gap: 20px; }
+  .p { position: relative; border-radius: 14px; overflow: hidden; }
+  .num { position: absolute; right: 20px; bottom: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: #8C84A6; text-transform: uppercase; }
+  .tag { position: absolute; left: 20px; bottom: 16px; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; color: #8C84A6; text-transform: uppercase; }
+  .center { display: grid; place-items: center; height: 100%; }
+
+  .info { background: var(--night); padding: 30px 28px; color: #EAE6F4; }
+  .info .k { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; color: var(--gold-l); }
+  .info h2 { margin-top: 14px; font-family: "Noto Serif TC", serif; font-weight: 600; font-size: 30px; letter-spacing: .04em; }
+  .info h2 small { display: block; margin-top: 2px; font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 20px; color: var(--lilac); letter-spacing: .01em; }
+  .info p { margin-top: 20px; font-family: "Noto Sans TC", sans-serif; font-size: 14.5px; line-height: 1.75; color: #B6AECB; }
+  .info p em { font-style: normal; color: #EAE6F4; }
+  .info .m { position: absolute; left: 28px; bottom: 26px; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: #6F678C; text-transform: uppercase; }
+
+  .light { background: var(--paper); }
+  .dark { background: var(--night-2); }
+  .lock { display: flex; align-items: center; gap: 22px; }
+  .lock.v { flex-direction: column; gap: 18px; }
+
+  .wA { font-family: var(--serif); font-weight: 600; font-size: 50px; letter-spacing: .005em; line-height: 1; }
+  .wB { font-family: "Archivo", sans-serif; font-weight: 600; font-size: 42px; letter-spacing: -.02em; line-height: 1; }
+  .wC { font-family: var(--serif); font-weight: 500; font-size: 30px; letter-spacing: .32em; line-height: 1; padding-left: .32em; }
+  .light .w { color: var(--ink); } .dark .w { color: #EAE6F4; }
+  .wB .f { color: var(--lav); } .dark .wB .f { color: var(--lilac); }
+  .sub { font-family: "Noto Serif TC", serif; font-size: 12px; letter-spacing: .6em; padding-left: .6em; color: var(--muted); }
+  .dark .sub { color: #8F86AE; }
+
+  .icons { background: var(--mist); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 22px; }
+  .icons .r { display: flex; align-items: flex-end; gap: 16px; }
+  .app { width: 84px; height: 84px; border-radius: 20px; display: grid; place-items: center; box-shadow: 0 12px 22px -12px rgba(30,24,48,.5); }
+  .app.d { background: linear-gradient(160deg, #2E2840, #181423); }
+  .app.l { background: #fff; box-shadow: 0 12px 22px -12px rgba(30,24,48,.35), inset 0 0 0 1px #E6E2EF; }
+  .fav { display: grid; place-items: center; border-radius: 6px; background: #fff; box-shadow: inset 0 0 0 1px #E6E2EF; }
+  .sizes { font-family: var(--mono); font-size: 9.5px; letter-spacing: .1em; color: #8C84A6; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="lavg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A99BD9"/><stop offset="1" stop-color="#6C5CA7"/>
+    </linearGradient>
+    <linearGradient id="lavgD" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D4CAF0"/><stop offset="1" stop-color="#A99BD9"/>
+    </linearGradient>
+    <linearGradient id="goldg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
+    </linearGradient>
+
+    <!-- A · 光心 G：一筆連續的 G，中心一點光 -->
+    <symbol id="A" viewBox="0 0 120 120">
+      <path d="M88.3,31.7 A40,40 0 1,0 100,60 L92,60" fill="none" stroke="url(#lavg)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="60" cy="60" r="9" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Ad" viewBox="0 0 120 120">
+      <path d="M88.3,31.7 A40,40 0 1,0 100,60 L92,60" fill="none" stroke="url(#lavgD)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="60" cy="60" r="9" fill="url(#goldg)"/>
+    </symbol>
+
+    <!-- B · 匯流：三條線匯成一條，終點是光 -->
+    <symbol id="B" viewBox="0 0 120 120">
+      <g fill="none" stroke-width="10" stroke-linecap="round">
+        <path d="M14,28 C48,28 50,60 82,60" stroke="#A99BD9"/>
+        <path d="M14,92 C48,92 50,60 82,60" stroke="#2E2840"/>
+        <path d="M14,60 L82,60" stroke="#6C5CA7"/>
+      </g>
+      <circle cx="100" cy="60" r="8" fill="url(#goldg)"/>
+    </symbol>
+    <symbol id="Bd" viewBox="0 0 120 120">
+      <g fill="none" stroke-width="10" stroke-linecap="round">
+        <path d="M14,28 C48,28 50,60 82,60" stroke="#6C5CA7"/>
+        <path d="M14,92 C48,92 50,60 82,60" stroke="#EAE6F4"/>
+        <path d="M14,60 L82,60" stroke="#A99BD9"/>
+      </g>
+      <circle cx="100" cy="60" r="8" fill="url(#goldg)"/>
+    </symbol>
+
+    <!-- C · 水上之光：地平線上的光，倒影成一條路 -->
+    <symbol id="C" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#6C5CA7" stroke-width="5"/>
+      <path d="M36,62 A24,24 0 0,1 84,62 Z" fill="url(#goldg)"/>
+      <line x1="22" y1="62" x2="98" y2="62" stroke="#6C5CA7" stroke-width="5" stroke-linecap="round"/>
+      <g stroke="#B8862E" stroke-width="5" stroke-linecap="round">
+        <line x1="44" y1="75" x2="76" y2="75"/>
+        <line x1="51" y1="87" x2="69" y2="87" stroke-opacity=".7"/>
+        <line x1="57" y1="98" x2="63" y2="98" stroke-opacity=".45"/>
+      </g>
+    </symbol>
+    <symbol id="Cd" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="50" fill="none" stroke="#A99BD9" stroke-width="5"/>
+      <path d="M36,62 A24,24 0 0,1 84,62 Z" fill="url(#goldg)"/>
+      <line x1="22" y1="62" x2="98" y2="62" stroke="#A99BD9" stroke-width="5" stroke-linecap="round"/>
+      <g stroke="#E3BC6A" stroke-width="5" stroke-linecap="round">
+        <line x1="44" y1="75" x2="76" y2="75"/>
+        <line x1="51" y1="87" x2="69" y2="87" stroke-opacity=".7"/>
+        <line x1="57" y1="98" x2="63" y2="98" stroke-opacity=".45"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="head"><b>GraceFlow — Logo 提案</b><span>Three directions · 2026.10</span></div>
+
+<!-- A -->
+<div class="row">
+  <section class="p info">
+    <div class="k">PROPOSAL A · MONOGRAM</div>
+    <h2>光心 G<small>The Lit G</small></h2>
+    <p>一筆不中斷的 <em>G</em>，是 Grace 也是持續推進的流程；字母不畫橫槓，中心只留一點<em>金色的光</em>——所有複雜最後收斂成一個清楚的核心。</p>
+    <div class="m">字首 + 意義 · 最好認、最好縮小</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock">
+    <svg width="96" height="96"><use href="#A"/></svg><div class="w wA">GraceFlow</div>
+  </div></div><span class="num">A1</span></section>
+  <section class="p dark"><div class="center"><div class="lock v">
+    <svg width="110" height="110"><use href="#Ad"/></svg><div class="w wA" style="font-size:40px">GraceFlow</div>
+  </div></div><span class="num">A2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="56" height="56"><use href="#Ad"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="30" height="30"><use href="#A"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="16" height="16"><use href="#A"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+
+<!-- B -->
+<div class="row">
+  <section class="p info">
+    <div class="k">PROPOSAL B · PRODUCT ACTION</div>
+    <h2>匯流<small>Confluence</small></h2>
+    <p>三條線代表<em>研究、工程、業務</em>——不同節奏的團隊。它們在中段匯成一條，指向終點的光：<em>對齊之後，才有交付</em>。這就是 TPM 每天在做的事。</p>
+    <div class="m">產品動作 · 最直接說出「我做什麼」</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock">
+    <svg width="92" height="92"><use href="#B"/></svg><div class="w wB">grace<span class="f">flow</span></div>
+  </div></div><span class="num">B1</span></section>
+  <section class="p dark"><div class="center"><div class="lock v">
+    <svg width="110" height="110"><use href="#Bd"/></svg><div class="w wB" style="font-size:34px">grace<span class="f">flow</span></div>
+  </div></div><span class="num">B2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="58" height="58"><use href="#Bd"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="30" height="30"><use href="#B"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="16" height="16"><use href="#B"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+
+<!-- C -->
+<div class="row">
+  <section class="p info">
+    <div class="k">PROPOSAL C · METAPHOR</div>
+    <h2>水上之光<small>Light on the Water</small></h2>
+    <p>地平線上升起的光，在水面倒影成一條<em>由寬漸窄的路</em>。直接把標語「<em>Light in the Path</em>」畫成一枚印記，安靜、有份量，適合名片與簡報封面。</p>
+    <div class="m">隱喻 · 最有故事、最像印章</div>
+  </section>
+  <section class="p light"><div class="center"><div class="lock v">
+    <svg width="104" height="104"><use href="#C"/></svg><div class="w wC">GRACEFLOW</div><div class="sub">恩典流動</div>
+  </div></div><span class="num">C1</span></section>
+  <section class="p dark"><div class="center"><div class="lock">
+    <svg width="84" height="84"><use href="#Cd"/></svg><div class="w wC" style="font-size:26px">GRACEFLOW</div>
+  </div></div><span class="num">C2</span></section>
+  <section class="p icons">
+    <div class="r">
+      <div class="app d"><svg width="60" height="60"><use href="#Cd"/></svg></div>
+      <div class="fav" style="width:40px;height:40px"><svg width="30" height="30"><use href="#C"/></svg></div>
+      <div class="fav" style="width:22px;height:22px;border-radius:4px"><svg width="16" height="16"><use href="#C"/></svg></div>
+    </div>
+    <div class="sizes">APP · 32 · 16 PX</div>
+  </section>
+</div>
+</body>
+</html>
