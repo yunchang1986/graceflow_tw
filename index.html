@@ -2,13 +2,15 @@
 <html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GraceFlow</title>
 <meta name="description" content="Amber Chang — AI Project Lead / Technical Program Manager. 把模糊的想法，變成可交付的 AI 系統。">
+<meta name="theme-color" content="#FAF9FC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181423" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L14 10 L23 12 L14 14 L12 23 L10 14 L1 12 L10 10 Z' fill='%236C5CA7'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='8 -56 224 232'%3E%3Cdefs%3E%3Cmask id='k' maskUnits='userSpaceOnUse' x='0' y='0' width='240' height='120'%3E%3Crect width='240' height='120' fill='white'/%3E%3Cpath d='M97.31,44.64 C105.76,48.48 113.6,53.6 120,60 C126.4,66.4 134.24,71.52 142.69,75.36' fill='none' stroke='black' stroke-width='34'/%3E%3C/mask%3E%3C/defs%3E%3Cpath d='M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z' fill='none' stroke='%237565B4' stroke-width='18' stroke-linecap='round' mask='url(%23k)'/%3E%3Cpath d='M97.31,44.64 C105.76,48.48 113.6,53.6 120,60 C126.4,66.4 134.24,71.52 142.69,75.36' fill='none' stroke='%23C2923C' stroke-width='18' stroke-linecap='round'/%3E%3C/svg%3E">
 <script>document.documentElement.classList.add('js');</script>
 <style>
   :root {
@@ -21,8 +23,10 @@
     --accent-soft: #F1EEF8;
     --gold: #B8862E;
     --card: #FFFFFF;
+    --loop: #7565B4;
+    --mark-gold: #C2923C;
+    --band: #1E1930;
   }
-  :root:not([data-theme="light"]) { }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --paper: #181423;
@@ -34,6 +38,9 @@
       --accent-soft: #241E38;
       --gold: #E3BC6A;
       --card: #211C33;
+      --loop: #B4A7E0;
+      --mark-gold: #E3BC6A;
+      --band: #221C36;
     }
   }
   :root[data-theme="dark"] {
@@ -46,10 +53,13 @@
     --accent-soft: #241E38;
     --gold: #E3BC6A;
     --card: #211C33;
+    --loop: #B4A7E0;
+    --mark-gold: #E3BC6A;
+    --band: #221C36;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -63,176 +73,256 @@
     -webkit-font-smoothing: antialiased;
   }
   body.en { font-family: "Archivo", "Noto Sans TC", -apple-system, sans-serif; }
+  main { overflow-x: clip; }
+  [hidden] { display: none !important; }
 
   /* language switching */
   body:not(.en) [data-lang="en"] { display: none; }
   body.en [data-lang="zh"] { display: none; }
 
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 max(24px, env(safe-area-inset-left)); }
+  .mark { display: block; height: auto; overflow: visible; }
 
   /* header */
   header {
     position: sticky; top: 0; z-index: 10;
     background: color-mix(in srgb, var(--paper) 88%, transparent);
-    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line);
   }
   .nav {
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
     height: 64px;
   }
   .brand {
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 12px;
+    min-height: 44px;
     font-family: "Cormorant Garamond", "Noto Serif TC", serif;
-    font-weight: 600; font-size: 23px; letter-spacing: 0.01em;
+    font-weight: 600; font-size: 24px; letter-spacing: 0.01em; line-height: 1;
     color: var(--ink); text-decoration: none;
   }
-  .brand svg { display: block; height: 26px; width: auto; }
-  .brand .wm-flow { color: var(--accent); }
+  .brand .mark { width: 50px; }
   .lang-toggle {
-    display: flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
+    display: flex; flex: none; border: 1px solid var(--line); border-radius: 999px; overflow: hidden;
   }
   .lang-toggle button {
     appearance: none; border: 0; background: transparent; color: var(--faint);
     font: inherit; font-size: 14px; padding: 8px 16px; cursor: pointer;
-    min-height: 44px; transition: color 0.2s, background 0.2s;
+    min-height: 44px; min-width: 48px; transition: color 0.2s, background 0.2s;
+    touch-action: manipulation;
   }
   .lang-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
   .lang-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 
   /* hero */
-  .hero { padding-top: 96px; padding-bottom: 80px; }
-  @media (max-width: 600px) { .hero { padding-top: 56px; padding-bottom: 64px; } }
+  .hero { position: relative; padding-top: 104px; padding-bottom: 96px; }
+  .hero-mark { position: relative; margin-bottom: 40px; }
+  .hero-mark::before {
+    content: ""; position: absolute; left: 130px; top: 42px; width: 220px; height: 220px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--mark-gold) 22%, transparent), transparent);
+    pointer-events: none;
+  }
+  .hero-mark .mark { position: relative; width: 260px; }
+  .brand-tagline {
+    font-family: "Cormorant Garamond", serif; font-style: italic;
+    font-size: 19px; color: var(--faint); letter-spacing: 0.02em;
+    margin-top: 14px;
+  }
   .eyebrow {
     font-family: "Archivo", sans-serif;
     font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--accent);
-    margin-bottom: 24px;
+    margin-bottom: 20px;
   }
   h1 {
     font-family: "Cormorant Garamond", "Noto Serif TC", "Times New Roman", serif;
-    font-size: clamp(34px, 6vw, 58px);
-    font-weight: 600; line-height: 1.28; letter-spacing: 0;
+    font-size: clamp(32px, 6vw, 60px);
+    font-weight: 600; line-height: 1.25; letter-spacing: 0;
     text-wrap: balance;
-    max-width: 21em;
+    max-width: 20em;
   }
   h1[data-lang="zh"] { font-weight: 700; }
   .nobr { white-space: nowrap; }
-  .hero-mark { margin-bottom: 36px; }
-  .hero-mark svg { display: block; width: 190px; height: auto; }
-  .brand-tagline {
-    font-family: "Cormorant Garamond", serif; font-style: italic;
-    font-size: 17px; color: var(--faint); letter-spacing: 0.03em;
-    margin-top: 10px;
-  }
   .hero p.lede {
-    margin-top: 28px; max-width: 36em;
+    margin-top: 28px; max-width: 34em;
     font-size: 18px; color: var(--muted);
   }
-  .hero .cta-row { margin-top: 40px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero .cta-row { margin-top: 40px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* hero mark draw-in */
+  .js .hero-mark .m-loop { stroke-dasharray: 473; stroke-dashoffset: 473; animation: draw 1.6s cubic-bezier(.55,0,.25,1) .15s forwards; }
+  .js .hero-mark .m-over { stroke-dasharray: 56; stroke-dashoffset: 56; animation: draw .55s ease-out 1.55s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
   .btn {
-    display: inline-flex; align-items: center; gap: 8px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
     min-height: 48px; padding: 10px 26px;
-    border-radius: 6px; text-decoration: none;
+    border-radius: 999px; text-decoration: none;
     font-family: "Archivo", "Noto Sans TC", sans-serif;
-    font-size: 16px; font-weight: 600;
-    transition: transform 0.2s, opacity 0.2s;
-    cursor: pointer;
+    font-size: 16px; font-weight: 600; white-space: nowrap;
+    transition: transform 0.2s, opacity 0.2s, border-color 0.2s, color 0.2s;
+    cursor: pointer; touch-action: manipulation;
   }
   .btn:active { transform: scale(0.98); }
   .btn-primary { background: var(--ink); color: var(--paper); }
-  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:hover { opacity: 0.86; }
   .btn-ghost { border: 1px solid var(--line); color: var(--ink); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-  .brand:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
-  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .btn .arrow { color: var(--mark-gold); }
 
   /* sections */
-  section { padding: 72px 0; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
+  section { padding: 88px 0; border-top: 1px solid var(--line); scroll-margin-top: 64px; }
   .section-label {
+    display: flex; align-items: center; gap: 14px;
     font-family: "Archivo", sans-serif;
     font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
     text-transform: uppercase; color: var(--faint);
-    margin-bottom: 40px;
+    margin-bottom: 44px;
   }
   .section-label::before {
-    content: ""; display: inline-block; width: 22px; height: 2px;
-    background: var(--accent); vertical-align: middle; margin-right: 12px;
+    content: ""; flex: none; width: 24px; height: 2px; border-radius: 2px;
+    background: var(--mark-gold);
   }
 
   /* what I do */
-  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 48px; }
-  @media (max-width: 720px) { .grid2 { grid-template-columns: 1fr; } }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 48px 56px; counter-reset: work; }
+  .work-item { counter-increment: work; border-top: 1px solid var(--line); padding-top: 22px; }
+  .work-item::before {
+    content: counter(work, decimal-leading-zero);
+    display: block; margin-bottom: 10px;
+    font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 500;
+    font-size: 26px; line-height: 1; color: var(--mark-gold);
+  }
   .work-item h3 {
     font-family: "Archivo", "Noto Sans TC", sans-serif;
-    font-size: 19px; font-weight: 700; margin-bottom: 10px;
+    font-size: 19px; font-weight: 700; line-height: 1.5; margin-bottom: 10px;
   }
   .work-item p { color: var(--muted); font-size: 16px; }
 
   /* domains */
-  .domain-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
-  @media (max-width: 720px) { .domain-list { grid-template-columns: 1fr; } }
+  .domain-list { list-style: none; display: flex; flex-wrap: wrap; gap: 12px; }
   .domain-list li {
-    display: flex; align-items: baseline; gap: 14px;
-    padding: 18px 0; border-bottom: 1px solid var(--line);
-    font-size: 17px; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 20px 10px 16px; border-radius: 999px;
+    background: var(--accent-soft); border: 1px solid var(--line);
+    font-size: 16px; font-weight: 500; line-height: 1.5;
   }
   .domain-list li::before {
-    content: ""; flex: none; width: 8px; height: 8px; border-radius: 2px;
-    background: var(--accent); transform: translateY(-1px) rotate(45deg);
+    content: ""; flex: none; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--loop);
   }
 
   /* background */
-  .bg-block { max-width: 40em; }
+  .timeline { position: relative; max-width: 42em; padding-left: 32px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 5px; top: 10px; bottom: 10px; width: 1px;
+    background: var(--line);
+  }
+  .bg-block { position: relative; }
+  .bg-block::before {
+    content: ""; position: absolute; left: -32px; top: 9px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--paper); border: 2px solid var(--loop);
+  }
+  .bg-block:first-child::before { background: var(--mark-gold); border-color: var(--mark-gold); }
   .bg-block h3 {
     font-family: "Archivo", "Noto Sans TC", sans-serif;
-    font-size: 19px; font-weight: 700;
+    font-size: 19px; font-weight: 700; line-height: 1.5;
   }
   .bg-block .period {
     font-family: "Archivo", sans-serif; font-size: 14px;
     color: var(--faint); letter-spacing: 0.04em;
     font-variant-numeric: tabular-nums;
-    margin: 4px 0 14px;
+    margin: 4px 0 12px;
   }
   .bg-block p { color: var(--muted); }
-  .bg-block + .bg-block { margin-top: 40px; }
+  .bg-block + .bg-block { margin-top: 44px; }
 
-  /* contact */
-  .contact-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 8px; }
-  .contact-note { margin-top: 24px; color: var(--faint); font-size: 15px; }
+  /* contact band */
+  #contact {
+    position: relative; overflow: hidden;
+    background: var(--band); border-top: 0;
+    color: #EAE6F4;
+    --loop: #B4A7E0; --mark-gold: #E3BC6A;
+  }
+  #contact .section-label { color: #9891B3; }
+  #contact .band-mark { position: absolute; right: -80px; top: 50%; transform: translateY(-50%); width: 440px; opacity: .14; pointer-events: none; }
+  .contact-lead {
+    position: relative; max-width: 22em;
+    font-family: "Noto Serif TC", "Cormorant Garamond", serif; font-weight: 600;
+    font-size: clamp(24px, 3.6vw, 34px); line-height: 1.5;
+  }
+  .contact-lead[lang="en"] { font-family: "Cormorant Garamond", serif; font-size: clamp(28px, 4.2vw, 40px); line-height: 1.25; }
+  .contact-row { position: relative; display: flex; gap: 12px; flex-wrap: wrap; margin-top: 36px; }
+  #contact .btn-primary { background: #FAF9FC; color: #2E2840; }
+  #contact .btn-ghost { border-color: rgba(234,230,244,.22); color: #EAE6F4; }
+  #contact .btn-ghost:hover { border-color: #E3BC6A; color: #E3BC6A; }
+  #contact .btn:focus-visible { outline-color: #E3BC6A; }
   .icon { width: 18px; height: 18px; flex: none; }
 
   footer {
-    border-top: 1px solid var(--line);
-    padding: 32px 0 48px;
+    padding: 32px 0 calc(40px + env(safe-area-inset-bottom));
     color: var(--faint); font-size: 14px;
     font-family: "Archivo", sans-serif;
   }
+  footer .wrap { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  footer .mark { width: 36px; }
 
   /* entrance animation */
   .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
   .js .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
+
+  /* mobile */
+  @media (max-width: 720px) {
+    .grid2 { grid-template-columns: 1fr; gap: 36px; }
+    section { padding: 64px 0; }
+    .section-label { margin-bottom: 32px; }
+  }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    .hero { padding-top: 56px; padding-bottom: 72px; }
+    .hero-mark { margin-bottom: 32px; }
+    .hero-mark .mark { width: 180px; }
+    .hero-mark::before { left: 90px; top: 29px; width: 160px; height: 160px; }
+    .brand-tagline { font-size: 17px; }
+    .hero p.lede { font-size: 17px; margin-top: 22px; }
+    .hero .cta-row { margin-top: 32px; }
+    .hero .cta-row .btn, .contact-row .btn { flex: 1 1 auto; padding: 10px 20px; }
+    #contact .band-mark { display: none; }
+  }
+  @media (max-width: 360px) {
+    .brand { font-size: 21px; gap: 9px; }
+    .brand .mark { width: 40px; }
+    .lang-toggle button { padding: 8px 12px; min-width: 44px; }
+  }
 </style>
 </head>
 <body>
 
+<!-- GraceFlow mark · 交會的 ∞：迴圈在交叉點以 mask 斷開，金色上筆沿曲線壓過 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <mask id="gf-knock" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="120">
+      <rect width="240" height="120" fill="#fff"/>
+      <path d="M97.31,44.64 C105.76,48.48 113.6,53.6 120,60 C126.4,66.4 134.24,71.52 142.69,75.36" fill="none" stroke="#000" stroke-width="25"/>
+    </mask>
+    <g id="gf-mark">
+      <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" style="stroke: var(--loop)" stroke-width="11" stroke-linecap="round" mask="url(#gf-knock)"/>
+      <path d="M97.31,44.64 C105.76,48.48 113.6,53.6 120,60 C126.4,66.4 134.24,71.52 142.69,75.36" fill="none" style="stroke: var(--mark-gold)" stroke-width="11" stroke-linecap="round"/>
+    </g>
+  </defs>
+</svg>
+
 <header>
   <div class="wrap nav">
-    <a class="brand" href="#top">
-      <svg viewBox="0 0 240 120" role="img" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="hloop" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#8F7FC4"/><stop offset="0.5" stop-color="#B7AAD9"/><stop offset="1" stop-color="#6C5CA7"/>
-          </linearGradient>
-          <linearGradient id="hstar" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
-          </linearGradient>
-        </defs>
-        <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#hloop)" stroke-width="9" stroke-linecap="round"/>
-        <path d="M120,22 L126,52 L150,60 L126,68 L120,98 L114,68 L90,60 L114,52 Z" fill="url(#hstar)"/>
-      </svg>
-      <span><span class="wm-grace">grace</span><span class="wm-flow">flow</span></span>
+    <a class="brand" href="#top" aria-label="GraceFlow">
+      <svg class="mark" viewBox="8 24 224 72" aria-hidden="true" focusable="false"><use href="#gf-mark"/></svg>
+      <span>GraceFlow</span>
     </a>
     <div class="lang-toggle" role="group" aria-label="語言切換 Language">
       <button type="button" id="btn-zh" aria-pressed="true">中文</button>
@@ -244,21 +334,9 @@
 <main id="top">
   <div class="wrap hero">
     <div class="hero-mark">
-      <svg viewBox="0 0 240 120" role="img" aria-label="GraceFlow — 流動曲線與光十字標誌">
-        <defs>
-          <linearGradient id="loopg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#8F7FC4"/><stop offset="0.5" stop-color="#B7AAD9"/><stop offset="1" stop-color="#6C5CA7"/>
-          </linearGradient>
-          <linearGradient id="starg" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#E9C87E"/><stop offset="1" stop-color="#B8862E"/>
-          </linearGradient>
-          <radialGradient id="glowg">
-            <stop offset="0" stop-color="#E9C87E" stop-opacity="0.5"/><stop offset="1" stop-color="#E9C87E" stop-opacity="0"/>
-          </radialGradient>
-        </defs>
-        <path d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" stroke="url(#loopg)" stroke-width="5.5" stroke-linecap="round"/>
-        <circle cx="120" cy="60" r="28" fill="url(#glowg)"/>
-        <path d="M120,24 L125,52 L146,60 L125,68 L120,96 L115,68 L94,60 L115,52 Z" fill="url(#starg)"/>
+      <svg class="mark" viewBox="8 24 224 72" role="img" aria-label="GraceFlow 標誌：交會的無限符號">
+        <path class="m-loop" d="M20,60 C20,28 88,28 120,60 C152,92 220,92 220,60 C220,28 152,28 120,60 C88,92 20,92 20,60 Z" fill="none" style="stroke: var(--loop)" stroke-width="11" stroke-linecap="round" mask="url(#gf-knock)"/>
+        <path class="m-over" d="M97.31,44.64 C105.76,48.48 113.6,53.6 120,60 C126.4,66.4 134.24,71.52 142.69,75.36" fill="none" style="stroke: var(--mark-gold)" stroke-width="11" stroke-linecap="round"/>
       </svg>
       <p class="brand-tagline">Grace in the Flow, Light in the Path</p>
     </div>
@@ -268,7 +346,7 @@
     <p class="lede" data-lang="zh">我是張又云 Amber，AI Project Lead / Technical Program Manager。六年以上帶領跨職能團隊，把 AI 專案從概念一路推進到上線交付。</p>
     <p class="lede" data-lang="en" lang="en">I'm Amber Chang, an AI Project Lead / Technical Program Manager with 6+ years leading cross-functional teams — taking AI projects from concept all the way to production.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" href="#contact"><span data-lang="zh">與我聯繫</span><span data-lang="en" lang="en">Get in touch</span></a>
+      <a class="btn btn-primary" href="#contact"><span data-lang="zh">與我聯繫</span><span data-lang="en" lang="en">Get in touch</span><span class="arrow" aria-hidden="true">→</span></a>
       <a class="btn btn-ghost" href="#work"><span data-lang="zh">我做的事</span><span data-lang="en" lang="en">What I do</span></a>
     </div>
   </div>
@@ -324,27 +402,32 @@
     <div class="wrap">
       <h2 class="section-label" data-lang="zh">經歷</h2>
       <h2 class="section-label" data-lang="en" lang="en">Background</h2>
-      <div class="bg-block reveal">
-        <h3 data-lang="zh">逢甲大學 人工智慧研究中心｜執行副主任</h3>
-        <h3 data-lang="en" lang="en">AI Research Center, Feng Chia University — Deputy Executive Director</h3>
-        <p class="period">2020 – 2026</p>
-        <p data-lang="zh">以 AI Project Lead / TPM 的角色帶領研究員與工程師團隊，統籌跨產業並行的 AI 專案：從需求工程、時程與成本規劃，到模型交付、系統上線與維運接手。</p>
-        <p data-lang="en" lang="en">Led teams of researchers and engineers as AI Project Lead / TPM, running parallel AI projects across industries — from requirement engineering, scheduling, and budgeting to model delivery, launch, and operations handover.</p>
-      </div>
-      <div class="bg-block reveal">
-        <h3 data-lang="zh">工程博士｜逢甲大學</h3>
-        <h3 data-lang="en" lang="en">Ph.D. in Engineering — Feng Chia University</h3>
-        <p class="period">2021</p>
-        <p data-lang="zh">智慧聯網產業博士學位學程，研究方向為人工智慧領域之電腦視覺應用。</p>
-        <p data-lang="en" lang="en">Industrial Ph.D. program in IoT; research focus on computer vision applications in AI.</p>
+      <div class="timeline">
+        <div class="bg-block reveal">
+          <h3 data-lang="zh">逢甲大學 人工智慧研究中心｜執行副主任</h3>
+          <h3 data-lang="en" lang="en">AI Research Center, Feng Chia University — Deputy Executive Director</h3>
+          <p class="period">2020 – 2026</p>
+          <p data-lang="zh">以 AI Project Lead / TPM 的角色帶領研究員與工程師團隊，統籌跨產業並行的 AI 專案：從需求工程、時程與成本規劃，到模型交付、系統上線與維運接手。</p>
+          <p data-lang="en" lang="en">Led teams of researchers and engineers as AI Project Lead / TPM, running parallel AI projects across industries — from requirement engineering, scheduling, and budgeting to model delivery, launch, and operations handover.</p>
+        </div>
+        <div class="bg-block reveal">
+          <h3 data-lang="zh">工程博士｜逢甲大學</h3>
+          <h3 data-lang="en" lang="en">Ph.D. in Engineering — Feng Chia University</h3>
+          <p class="period">2021</p>
+          <p data-lang="zh">智慧聯網產業博士學位學程，研究方向為人工智慧領域之電腦視覺應用。</p>
+          <p data-lang="en" lang="en">Industrial Ph.D. program in IoT; research focus on computer vision applications in AI.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section id="contact">
+    <svg class="mark band-mark" viewBox="8 24 224 72" aria-hidden="true" focusable="false"><use href="#gf-mark"/></svg>
     <div class="wrap">
       <h2 class="section-label" data-lang="zh">聯絡方式</h2>
       <h2 class="section-label" data-lang="en" lang="en">Contact</h2>
+      <p class="contact-lead" data-lang="zh">目前開放 AI 專案管理、技術專案顧問與正職機會的討論。</p>
+      <p class="contact-lead" data-lang="en" lang="en">Open to conversations about AI program management, technical project consulting, and full-time opportunities.</p>
       <div class="contact-row">
         <a class="btn btn-primary" href="mailto:yunchang1986@gmail.com">
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -361,14 +444,15 @@
           LINE
         </a>
       </div>
-      <p class="contact-note" data-lang="zh">目前開放 AI 專案管理、技術專案顧問與正職機會的討論。</p>
-      <p class="contact-note" data-lang="en" lang="en">Open to conversations about AI program management, technical project consulting, and full-time opportunities.</p>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">© 2026 Amber Chang · graceflow.tw · <em>Grace in the Flow, Light in the Path</em></div>
+  <div class="wrap">
+    <svg class="mark" viewBox="8 24 224 72" aria-hidden="true" focusable="false"><use href="#gf-mark"/></svg>
+    <span>© 2026 Amber Chang · graceflow.tw · <em>Grace in the Flow, Light in the Path</em></span>
+  </div>
 </footer>
 
 <script>

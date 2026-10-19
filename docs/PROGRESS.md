@@ -60,3 +60,12 @@
 - 顧問角色評估：推薦 D（連字 gf），B 次之；E、F 不建議（F 有宗教聯想風險）
 - ∞ 重新設計（`docs/brand/graceflow-logo-infinity.png`，原始檔 `logo-infinity.html`）：∞1 開放的 ∞（缺口留金光）、∞2 交會的 ∞（上下交錯、金色上筆＝客戶與顧問交會）、∞3 精修現行版；顧問角色推薦 ∞2
 - 待決：使用者選定方向 → 精修（字距、16px 版本）→ 換上網站與 favicon、更新 brand kit
+
+## 2026-10-19 網站改版：採用 ∞2「交會的 ∞」
+
+- 使用者選定 ∞2；標誌精修：金色上筆改沿原曲線（t=0.8→1、0→0.2 的貝茲子段），交叉處用 SVG mask 斷開，不依賴背景色
+- 標誌顏色用 CSS 變數（--loop / --mark-gold），淺色/深色模式、深色聯絡區塊自動切換；favicon 改為新標誌
+- 版面：hero 標誌描線動畫（reduced-motion 時關閉）、「我做的事」加 01–04 編號、領域改膠囊標籤、經歷改時間軸、聯絡改深色區塊
+- 手機：375 / 320px、中英文、淺深色皆截圖驗證；按鈕文字不斷行、手機版 CTA 等寬、safe-area 內距、theme-color
+- 修既有 bug：LINE 按鈕的 `hidden` 被 `.btn` 的 display 蓋掉而顯示（連到 PLACEHOLDER），加 `[hidden]{display:none!important}`
+- 文案未更動；brand kit 總覽圖仍是舊標誌，待更新
